@@ -4,24 +4,26 @@ import Item from "./Item";
 const ItemList = ({ items, highlightNo, maxItems, handleClick }) => {
   return (
     <div>
-      <ul style={{ listStyleType: "none", paddingInlineStart: 0 }}>
-        {items.length > 0 &&
-          items.map((item, i) => {
+      {items.length > 0 && (
+        <div className="bg-teal-lightest border-b-4 border-teal rounded-b text-teal-darkest px-4 py-3 shadow-md my-2 ">
+          {items.map((item, i) => {
             if (i < maxItems) {
               const isHighlight = highlightNo === i;
               return (
-                <Item
-                  item={item}
-                  key={i}
-                  isHighlight={isHighlight}
-                  itemNo={i}
-                  handleClick={handleClick}
-                />
+                <div key={i}>
+                  <Item
+                    item={item}
+                    isHighlight={isHighlight}
+                    itemNo={i}
+                    handleClick={handleClick}
+                  />
+                </div>
               );
             }
             return null;
           })}
-      </ul>
+        </div>
+      )}
     </div>
   );
 };

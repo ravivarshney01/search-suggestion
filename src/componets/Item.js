@@ -7,13 +7,12 @@ const Item = ({ item, isHighlight, itemNo, handleClick }) => {
   };
 
   return (
-    <div>
-      <li
-        style={isHighlight ? { color: "red" } : { color: "black" }}
-        onClick={handleMouseClick}
-      >
-        {item}
-      </li>
+    <div
+      className="p-2"
+      style={isHighlight ? { background: "#f2f2f2" } : { background: "white" }}
+      onClick={handleMouseClick}
+    >
+      {item}
     </div>
   );
 };
