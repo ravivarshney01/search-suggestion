@@ -2,6 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Features
+
+- Live suggestions according to input
+- History hint using local storage
+- Tab, Enter and Arrow keys controlled suggestions
+
 ## Available Scripts
 
 In the project directory, you can run:
