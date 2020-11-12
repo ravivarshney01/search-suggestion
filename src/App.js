@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import SearchBar from "./componets/SearchBar";
-import SearchResult from "./componets/SearchResult";
+import SearchBar from "./components/SearchBar";
+import SearchResult from "./components/SearchResult";
 
 function App() {
   const data = [
