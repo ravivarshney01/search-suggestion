@@ -36,6 +36,8 @@ const useSearchInput = ({ data, query, setQuery, search }) => {
     if (query.length > 0) {
       updateHistory();
       search(displayText);
+      setQuery("");
+      setDisplayText("");
     }
   };
   const handleKeyDown = (e) => {
