@@ -389,6 +389,12 @@ svg {
   background-color: rgba(247, 250, 252, var(--bg-opacity));
 }
 
+.hover\:bg-gray-300:hover {
+  --bg-opacity: 1;
+  background-color: #e2e8f0;
+  background-color: rgba(226, 232, 240, var(--bg-opacity));
+}
+
 .border-gray-200 {
   --border-opacity: 1;
   border-color: #edf2f7;
@@ -414,6 +420,10 @@ svg {
 
 .border-b-4 {
   border-bottom-width: 4px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .flex {

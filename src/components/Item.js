@@ -8,8 +8,8 @@ const Item = ({ item, isHighlight, itemNo, handleClick }) => {
 
   return (
     <div
-      className="p-2"
-      style={isHighlight ? { background: "#f2f2f2" } : { background: "white" }}
+      style={isHighlight ? { background: "#e2e8f0" } : {}}
+      className="p-2 hover:bg-gray-300 cursor-pointer"
       onClick={handleMouseClick}
     >
       {item}
