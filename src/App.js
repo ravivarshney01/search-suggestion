@@ -1,5 +1,9 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  Switch,
+  Route,
+  useHistory as useRouterHistory,
+} from "react-router-dom";
 import SearchBar from "./components/SearchBar";
 import SearchResult from "./components/SearchResult";
 
@@ -18,19 +22,28 @@ function App() {
     "Vishal Kumar",
   ];
   const [result, setResult] = useState("");
+  const [query, setQuery] = useState("");
+  const routerHistory = useRouterHistory();
 
+  const search = (q) => {
+    setResult(q);
+    routerHistory.push("/search");
+  };
   return (
     <div className="flex flex-col  justify-center mt-20 items-center">
-      <Router>
-        <Switch>
-          <Route exact path="/">
-            <SearchBar data={data} setResult={setResult} />
-          </Route>
-          <Route path="/search">
-            <SearchResult result={result} />
-          </Route>
-        </Switch>
-      </Router>
+      <Switch>
+        <Route exact path="/">
+          <SearchBar
+            data={data}
+            search={search}
+            query={query}
+            setQuery={setQuery}
+          />
+        </Route>
+        <Route path="/search">
+          <SearchResult result={result} />
+        </Route>
+      </Switch>
     </div>
   );
 }

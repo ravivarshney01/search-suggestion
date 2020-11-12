@@ -1,17 +1,15 @@
 import React, { useRef, useState } from "react";
 import ItemList from "./ItemList";
 import useHistory from "../hooks/useHistory";
-import { useHistory as useRouterHistory } from "react-router-dom";
+import PropTypes from "prop-types";
 
-const SearchBar = ({ data, setResult }) => {
-  const [query, setQuery] = useState("");
+const SearchBar = ({ data, search, query, setQuery }) => {
   const [displayText, setDisplayText] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [highlightNo, setHighlightNo] = useState(-1);
   const [hint, setHint] = useState("");
-  const [history, updateHistory] = useHistory(query, "history");
+  const [history, updateHistory] = useHistory(displayText, "history");
   const searchRef = useRef(null);
-  const routerHistory = useRouterHistory();
 
   const handleChange = (e) => {
     setQuery(e.target.value);
@@ -101,8 +99,7 @@ const SearchBar = ({ data, setResult }) => {
   const handleSearch = () => {
     if (query.length > 0) {
       updateHistory();
-      setResult(query);
-      routerHistory.push("/search");
+      search(displayText);
     }
   };
 
@@ -162,6 +159,13 @@ const SearchBar = ({ data, setResult }) => {
       />
     </div>
   );
+};
+
+SearchBar.propTypes = {
+  data: PropTypes.array.isRequired,
+  search: PropTypes.func.isRequired,
+  query: PropTypes.string.isRequired,
+  setQuery: PropTypes.func.isRequired,
 };
 
 export default SearchBar;
