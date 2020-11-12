@@ -5,7 +5,11 @@ const useHistory = (query, storageName) => {
 
   useEffect(() => {
     let items = JSON.parse(localStorage.getItem(storageName));
-    setHistory(items.my || []);
+    if (items) {
+      setHistory(items.my);
+    } else {
+      setHistory([]);
+    }
   }, [query, storageName]);
 
   const updateHistory = () => {
