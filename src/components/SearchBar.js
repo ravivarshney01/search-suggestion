@@ -1,20 +1,43 @@
 import React from "react";
 import PropTypes from "prop-types";
-import useSearchInput from "../hooks/useSearchInput";
+import ItemList from "./ItemList";
+import useSearchInput from "../hooks/useSearchInputWithSuggestionsAndHint";
 
-const SearchBar = ({ data, search, query, setQuery }) => {
-  const [SearchInput, Hint, handleSearch, SuggestionsList] = useSearchInput({
-    data,
+const SearchBar = ({ data, search }) => {
+  const [
+    handleKeyDown,
+    suggestions,
+    hint,
+    handleChange,
+    highlightNo,
+    handleSearch,
     query,
-    setQuery,
-    search,
-  });
+  ] = useSearchInput({ data, search });
 
   return (
     <div>
-      <Hint />
+      {hint.length > 0 ? (
+        <div className="absolute text-xs bg-gray-100 rounded py-1 px-4 -my-8 bottom-full">
+          {hint}
+          <svg
+            className="absolute text-gray-400 h-2 my-1  top-full"
+            x="0px"
+            y="0px"
+            viewBox="0 0 255 255"
+          >
+            <polygon className="fill-current" points="0,0 127.5,127.5 255,0" />
+          </svg>
+        </div>
+      ) : null}
       <div className="flex border border-gray-200 rounded-full p-4 shadow text-xl ">
-        <SearchInput />
+        <input
+          autoFocus
+          type="text"
+          className="w-full outline-none px-3"
+          value={query}
+          onChange={(e) => handleChange(e)}
+          onKeyDown={handleKeyDown}
+        />
         <button onClick={handleSearch}>
           <svg
             className="text-gray-600 h-6 w-6 fill-current"
@@ -31,7 +54,7 @@ const SearchBar = ({ data, search, query, setQuery }) => {
           </svg>
         </button>
       </div>
-      <SuggestionsList />
+      <ItemList items={suggestions} maxItems={5} highlightNo={highlightNo} />
     </div>
   );
 };
