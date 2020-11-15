@@ -28,3 +28,13 @@ test("should get Ravi Varshney", () => {
   act(() => refreshHint("ravi v"));
   expect(result.current[0]).toBe("Ravi Varshney");
 });
+
+test("should not give hint if qury is empty", () => {
+  const { result } = renderHook(() => useHistoryHint("history"));
+  let [hint, addtoHistory, refreshHint] = result.current;
+  expect(hint).toBe("");
+  act(() => addtoHistory("Ravi Varshney"));
+  act(() => addtoHistory("Ravi Shastri"));
+  act(() => refreshHint(""));
+  expect(result.current[0]).toBe("");
+});

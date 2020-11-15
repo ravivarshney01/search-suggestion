@@ -37,3 +37,11 @@ test("2nd suggestion should be Ravi Shasti", () => {
   act(() => refreshSuggestions("ravi"));
   expect(result.current[0][1]).toBe("Ravi Shastri");
 });
+
+test("should give 0 suggestions if query is empty", () => {
+  const { result } = renderHook(() => useSuggestions(data));
+  let [suggestions, refreshSuggestions] = result.current;
+  expect(suggestions.length).toBe(0);
+  act(() => refreshSuggestions(""));
+  expect(result.current[0].length).toBe(0);
+});
