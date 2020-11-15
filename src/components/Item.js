@@ -11,6 +11,7 @@ const Item = ({ item, isHighlight, itemNo, handleClick }) => {
       style={isHighlight ? { background: "#e2e8f0" } : {}}
       className="p-2 cursor-pointer"
       onClick={handleMouseClick}
+      data-testid="suggestion-listItem"
     >
       {item}
     </div>
