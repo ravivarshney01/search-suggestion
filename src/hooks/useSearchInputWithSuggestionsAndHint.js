@@ -35,11 +35,9 @@ const useSearchInput = ({ data, search }) => {
     }
     if (e.key === "ArrowRight" && highlightNo !== -1) {
       e.preventDefault();
-      if (highlightNo !== -1) {
-        setQuery(displayText);
-        refreshSuggestions(displayText);
-        refreshHint(displayText);
-      }
+      setQuery(displayText);
+      refreshSuggestions(displayText);
+      refreshHint(displayText);
     }
     if (e.key === "Tab" && hint.length > 0 && highlightNo === -1) {
       e.preventDefault();

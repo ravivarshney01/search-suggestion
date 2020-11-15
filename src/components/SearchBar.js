@@ -54,7 +54,12 @@ const SearchBar = ({ data, search }) => {
           </svg>
         </button>
       </div>
-      <ItemList items={suggestions} maxItems={5} highlightNo={highlightNo} />
+      <ItemList
+        items={suggestions}
+        maxItems={5}
+        highlightNo={highlightNo}
+        handleClick={(index) => handleSearch(suggestions[index])}
+      />
     </div>
   );
 };
