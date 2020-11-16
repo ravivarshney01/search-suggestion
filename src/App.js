@@ -22,7 +22,6 @@ function App() {
     "Vishal Kumar",
   ];
   const [result, setResult] = useState("");
-  const [query, setQuery] = useState("");
   const routerHistory = useRouterHistory();
 
   const search = (q) => {
@@ -33,12 +32,7 @@ function App() {
     <div className="flex flex-col  justify-center mt-20 items-center">
       <Switch>
         <Route exact path="/">
-          <SearchBar
-            data={data}
-            search={search}
-            query={query}
-            setQuery={setQuery}
-          />
+          <SearchBar data={data} search={search} />
         </Route>
         <Route path="/search">
           <SearchResult result={result} />

@@ -17,7 +17,10 @@ const SearchBar = ({ data, search }) => {
   return (
     <div>
       {hint.length > 0 ? (
-        <div className="absolute text-xs bg-gray-100 rounded py-1 px-4 -my-8 bottom-full">
+        <div
+          className="absolute text-xs bg-gray-100 rounded py-1 px-4 -my-8 bottom-full"
+          data-testid="hint"
+        >
           {hint}
           <svg
             className="absolute text-gray-400 h-2 my-1  top-full"
@@ -37,8 +40,9 @@ const SearchBar = ({ data, search }) => {
           value={query}
           onChange={(e) => handleChange(e)}
           onKeyDown={handleKeyDown}
+          data-testid="input"
         />
-        <button onClick={handleSearch}>
+        <button onClick={handleSearch} data-testid="button">
           <svg
             className="text-gray-600 h-6 w-6 fill-current"
             xmlns="http://www.w3.org/2000/svg"
@@ -58,6 +62,7 @@ const SearchBar = ({ data, search }) => {
         items={suggestions}
         maxItems={5}
         highlightNo={highlightNo}
+        data-testid="list"
         handleClick={(index) => handleSearch(suggestions[index])}
       />
     </div>
@@ -67,8 +72,6 @@ const SearchBar = ({ data, search }) => {
 SearchBar.propTypes = {
   data: PropTypes.array.isRequired,
   search: PropTypes.func.isRequired,
-  query: PropTypes.string.isRequired,
-  setQuery: PropTypes.func.isRequired,
 };
 
 export default SearchBar;
