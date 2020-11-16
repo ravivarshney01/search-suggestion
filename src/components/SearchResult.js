@@ -1,12 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
-const SearchResult = ({ result }) => {
+const SearchResult = ({ result, setResult }) => {
   return (
     <>
-      <p className="text-4xl">{result}</p>
-      <Link to="/" className="">
+      <p data-testid="result" className="text-4xl">
+        {result}
+      </p>
+      <p
+        className="cursor-pointer"
+        data-testid="back"
+        onClick={() => setResult("")}
+      >
         &#8592; Go back
-      </Link>
+      </p>
     </>
   );
 };
